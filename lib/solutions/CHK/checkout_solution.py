@@ -36,51 +36,39 @@ def checkout(skus):
         "I": {"price": 35, "count": 0},
         "J": {"price": 60, "count": 0},
         "K": {"price": 80, "count": 0, "offer": n_items_for_p, "args":(2, 150, 0, 0)},
-
-
-
-
-
+        "L": {"price": 90, "count": 0},
+        "M": {"price": 15, "count": 0},
+        "N": {"price": 40, "count": 0, "offer": free_X_for_nY, "args": ("M", 3, "N")},
+        "O": {"price": 10, "count": 0},
+        "P": {"price": 50, "count": 0, "offer": n_items_for_p, "args":(5, 200, 0, 0)},
+        "Q": {"price": 30, "count": 0, "offer": n_items_for_p, "args":(3, 80, 0, 0)},
+        "R": {"price": 50, "count": 0, "offer": free_X_for_nY, "args":("Q", 3, "R")},
+        "S": {"price": 30, "count": 0},
+        "T": {"price": 20, "count": 0},
+        "U": {"price": 40, "count": 0, "offer": buy_n_get_1_free, "args": (3, "U")},
+        "V": {"price": 50, "count": 0, "offer": n_items_for_p, "args":(3, 130, 2, 90)},
+        "W": {"price": 20, "count": 0},
+        "X": {"price": 90, "count": 0},
+        "Y": {"price": 10, "count": 0},
+        "Z": {"price": 50, "count": 0},
 
     }
     for item in skus:
         if item not in items: return -1
         items[item]["count"] += 1
 
-    #CHK_R2
-
-    def get_price_for_b(n):
-        batches_of_2 = n // 2
-        remaining = n  % 2
-        return batches_of_2 * 45 + remaining * items["B"]["price"]
-
-
-    freeBs = items["E"]["count"] // 2
-    items["B"]["count"] =  max(items["B"]["count"] - freeBs, 0)
-
-    #CHK_R3   
-
-    if items["F"]["count"] >= 3:
-        freeFs = items["F"]["count"]//3
-        items["F"]["count"] -= freeFs
+    for item in items.values():
+        if "offer" in item and item["offer"] != n_items_for_p:
+            item["offer"](*item["args"])
 
 
     subtotal = 0
-    for item, details in items.items():
-        if item == "A":
-            batches_of_5 = details["count"] // 5
-            remaining = details["count"]  % 5
-
-            batches_of_3 = remaining // 3
-            remaining = remaining  % 3
-
-            subtotal += batches_of_5*200 + batches_of_3 * 130 + remaining * details["price"]
-
-        elif item == "B":
-            subtotal += get_price_for_b(details["count"])
-
+    for item in items.values():
+        if item.get("offer") == n_items_for_p:
+            subtotal += n_items_for_p(*item["args"], item)
         else:
-            subtotal += details["price"]*details["count"]
+            subtotal += item["price"]*item["count"]
 
-    
     return int(subtotal)
+
+
