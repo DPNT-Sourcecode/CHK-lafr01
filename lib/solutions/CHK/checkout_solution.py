@@ -6,7 +6,8 @@ def checkout(skus):
         "B": {"price": 30, "count": 0},
         "C": {"price": 20, "count": 0},
         "D": {"price": 15, "count": 0},
-        "E": {"price": 40, "count": 0}
+        "E": {"price": 40, "count": 0},
+        "F": {"price": 10, "count": 0}
     }
     for item in skus:
         if item not in items: return -1
@@ -41,6 +42,7 @@ def checkout(skus):
 
 
     return int(subtotal - discount)
+
 
 
 
