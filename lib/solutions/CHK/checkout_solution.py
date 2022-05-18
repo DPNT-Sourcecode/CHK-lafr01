@@ -11,6 +11,12 @@ def checkout(skus):
     for item in skus:
         if item not in items: return -1
         items[item]["count"] += 1
+
+    def get_price_for_b(n):
+        batches_of_2 = n // 2
+        remaining = n  % 2
+        return batches_of_2 * 45 + remaining * items["B"]["price"]
+
     
     subtotal = 0
     for item, details in items.items():
@@ -26,13 +32,15 @@ def checkout(skus):
         elif item == "B":
             batches_of_2 = details["count"] // 2
             remaining = details["count"]  % 2
-            subtotal += batches_of_2 * 45 + remaining * details["price"]
+            Bsubtotal = batches_of_2 * 45 + remaining * details["price"]
+            subtotal += Bsubtotal
 
         else:
             subtotal += details["price"]*details["count"]
 
     freeBs = items["E"]["count"] // 2
-    discount = min(items["B"]["count"], freeBs)*items["B"]["price"]
+    if items["B"]["count"]:
+        discount = min(items["B"]["count"], freeBs)*items["B"]["price"]
 
     print(discount, freeBs, min(items["B"]["count"], freeBs))
     print(items)
@@ -41,3 +49,4 @@ def checkout(skus):
     return int(subtotal - discount)
 
 checkout("EEEEBB")
+
