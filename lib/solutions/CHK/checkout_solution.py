@@ -17,13 +17,19 @@ def checkout(skus):
     def free_X_for_nY(X, n, Y):
         freeXs = items[Y]["count"] // n
         items[X]["count"] = max(items[X]["count"]-freeXs, 0)
+    
+    def buy_n_get_1_free(n, X):
+        if items[X]["count"] >= n+1:
+            free = items[X]["count"] // n+1
+            items[X]["count"] -= free
+
 
     items = { 
-        "A": {"price": 50, "count": 0, "deal":},
-        "B": {"price": 30, "count": 0},
+        "A": {"price": 50, "count": 0, "offer": n_items_for_p, "args":(5, 200, 3, 130)},
+        "B": {"price": 30, "count": 0, "offer": n_items_for_p, "args":(2, 45, 0, 0)},
         "C": {"price": 20, "count": 0},
         "D": {"price": 15, "count": 0},
-        "E": {"price": 40, "count": 0},
+        "E": {"price": 40, "count": 0, "offer": n_items_for_p, "args":(2, 45, 0, 0)},
         "F": {"price": 10, "count": 0}
     }
     for item in skus:
@@ -67,5 +73,6 @@ def checkout(skus):
 
     
     return int(subtotal)
+
 
 
