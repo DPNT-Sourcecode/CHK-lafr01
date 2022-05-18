@@ -53,7 +53,7 @@ def checkout(skus):
         "H": {"price": 10, "count": 0, "offer": n_items_for_p, "args":(10, 80, 5, 45)},
         "I": {"price": 35, "count": 0},
         "J": {"price": 60, "count": 0},
-        "K": {"price": 70, "count": 0, "offer": n_items_for_p, "args":(2, 150, 0, 0)},
+        "K": {"price": 70, "count": 0, "offer": n_items_for_p, "args":(2, 120, 0, 0)},
         "L": {"price": 90, "count": 0},
         "M": {"price": 15, "count": 0},
         "N": {"price": 40, "count": 0, "offer": free_X_for_nY, "args": ("M", 3, "N")},
@@ -89,6 +89,7 @@ def checkout(skus):
     print(subtotal)
     return int(subtotal)
 checkout("ABCDEFGHIJKLMNOPQRSTUVW")
+
 
 
 
