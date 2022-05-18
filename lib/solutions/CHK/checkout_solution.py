@@ -9,6 +9,7 @@ def checkout(skus):
     }
 
     for item in skus:
+        if item not in items: return -1
         items[item]["count"] += 1
     
     subtotal = 0
@@ -27,9 +28,3 @@ def checkout(skus):
             subtotal += details["price"]*details["count"]
 
     return int(subtotal)
-
-
-
-
-
-
