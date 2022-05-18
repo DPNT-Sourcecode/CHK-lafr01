@@ -12,7 +12,7 @@ def checkout(skus):
             remaining = remaining  % n2
             return batches_of_n * p + batches_of_n2*p2 + remaining*item["price"]
 
-        return 
+        return batches_of_n * p + remaining*item["price"]
 
     items = { 
         "A": {"price": 50, "count": 0, "deal":},
@@ -63,3 +63,4 @@ def checkout(skus):
 
     
     return int(subtotal)
+
