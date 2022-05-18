@@ -27,28 +27,14 @@ def checkout(skus):
         total_items = sum(item["count"] for item in items.values() if item.get("offer") == "multi-buy")
         to_remove = to_remove_copy = total_items // 3
 
+        # Remove items from count, in price order
         for item in ["X", "Z", "S", "T", "W", "Y"]:
+            if to_remove_copy == 0: break
             items_removed = min(items[item]["count"], to_remove_copy)
             items[item]["count"] -= items_removed
             to_remove_copy -= items_removed
-            if to_remove_copy == 0: break;
-
-        # while to_remove_copy:           
-        #     if items["X"]["count"]:
-        #         items["X"]["count"] -= 1
-        #     elif items["Z"]["count"]:
-        #         items["Z"]["count"] -= 1
-        #     elif items["S"]["count"]:
-        #         items["S"]["count"] -= 1
-        #     elif items["T"]["count"]:
-        #         items["T"]["count"] -= 1
-        #     elif items["W"]["count"]:
-        #         items["W"]["count"] -= 1
-        #     elif items["Y"]["count"]:
-        #         items["Y"]["count"] -= 1
-        #     to_remove_copy -= 1
         
-        return 
+        return to_remove*15
     
             
 
@@ -93,20 +79,15 @@ def checkout(skus):
         if item.get("offer") == free_X_for_nY or item.get("offer") == buy_n_get_1_free:
             item["offer"](*item["args"])
     
-    buy_any3_for_x()
 
 
-    subtotal = 0
+    subtotal = buy_any3_for_x()
     for item in items.values():
         if item.get("offer") == n_items_for_p:
             subtotal += n_items_for_p(*item["args"], item)
         else:
             subtotal += item["price"]*item["count"]
-
+    print(subtotal)
 
     return int(subtotal)
 checkout("STWXYZZZZ")
-
-
-
-
