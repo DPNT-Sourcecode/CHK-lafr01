@@ -18,7 +18,7 @@ def checkout(skus):
         return batches_of_2 * 45 + remaining * items["B"]["price"]
 
     
-    subtotal = 0
+    subtotal = discount = 0
     for item, details in items.items():
         if item == "A":
             batches_of_5 = details["count"] // 5
@@ -40,5 +40,6 @@ def checkout(skus):
         discount = get_price_for_b(min(items["B"]["count"], freeBs))
 
     return int(subtotal - discount)
+
 
 
