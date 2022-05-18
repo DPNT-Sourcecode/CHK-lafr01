@@ -1,8 +1,21 @@
+from functools import partial
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
+
+    def n_items_for_p(n, p, n2, p2, item):
+        batches_of_n = item["count"] // n
+        remaining = item["count"] % n
+
+        if n2 and p2:
+            batches_of_n2 = remaining // n2
+            remaining = remaining  % n2
+            return batches_of_n * p + batches_of_n2*p2 + remaining*item["price"]
+
+        return 
+
     items = { 
-        "A": {"price": 50, "count": 0},
+        "A": {"price": 50, "count": 0, "deal":},
         "B": {"price": 30, "count": 0},
         "C": {"price": 20, "count": 0},
         "D": {"price": 15, "count": 0},
@@ -50,6 +63,3 @@ def checkout(skus):
 
     
     return int(subtotal)
-
-
-
