@@ -24,7 +24,7 @@ def checkout(skus):
             items[X]["count"] -= free
     
     def buy_any3_for_x():
-        total_items = sum(item["count"] for item in items.values() if item["offer"] == "multi-buy")
+        total_items = sum(item["count"] for item in items.values() if item.get("offer") == "multi-buy")
         print(total_items)
 
 
@@ -65,6 +65,8 @@ def checkout(skus):
     for item in items.values():
         if item.get("offer") == free_X_for_nY or item.get("offer") == buy_n_get_1_free:
             item["offer"](*item["args"])
+    
+    buy_any3_for_x()
 
 
     subtotal = 0
@@ -74,4 +76,7 @@ def checkout(skus):
         else:
             subtotal += item["price"]*item["count"]
 
+
     return int(subtotal)
+checkout("STWXYZZZZ")
+
