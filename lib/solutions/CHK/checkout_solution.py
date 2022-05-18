@@ -5,7 +5,8 @@ def checkout(skus):
         "A": {"price": 50, "count": 0},
         "B": {"price": 30, "count": 0},
         "C": {"price": 20, "count": 0},
-        "D": {"price": 15, "count": 0}
+        "D": {"price": 15, "count": 0},
+        "E": {"price": 40, "count": 0}
     }
 
     for item in skus:
@@ -21,7 +22,7 @@ def checkout(skus):
             batches_of_3 = remaining // 3
             remaining = remaining  % 3
 
-            subtotal += batches_of_3 * 130 + remaining * details["price"]
+            subtotal += batches_of_5*200 + batches_of_3 * 130 + remaining * details["price"]
 
         elif item == "B":
             batches_of_2 = details["count"] // 2
@@ -32,5 +33,6 @@ def checkout(skus):
             subtotal += details["price"]*details["count"]
 
     return int(subtotal)
+
 
 
