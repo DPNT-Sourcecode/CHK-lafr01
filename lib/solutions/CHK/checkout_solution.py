@@ -13,6 +13,10 @@ def checkout(skus):
             return batches_of_n * p + batches_of_n2*p2 + remaining*item["price"]
 
         return batches_of_n * p + remaining*item["price"]
+    
+    def free_X_for_nY(X, n, Y):
+        freeXs = items[Y]["count"] // n
+        items[X]["count"] = max(items[X]["count"]-freeXs, 0)
 
     items = { 
         "A": {"price": 50, "count": 0, "deal":},
@@ -63,4 +67,5 @@ def checkout(skus):
 
     
     return int(subtotal)
+
 
