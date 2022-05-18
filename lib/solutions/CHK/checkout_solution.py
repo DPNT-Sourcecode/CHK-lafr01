@@ -30,7 +30,18 @@ def checkout(skus):
         "C": {"price": 20, "count": 0},
         "D": {"price": 15, "count": 0},
         "E": {"price": 40, "count": 0, "offer": free_X_for_nY, "args":("B", 2 , "E")},
-        "F": {"price": 10, "count": 0, "offer": buy_n_get_1_free, "args": (2, "F")}
+        "F": {"price": 10, "count": 0, "offer": buy_n_get_1_free, "args": (2, "F")},
+        "G": {"price": 20, "count": 0},
+        "H": {"price": 10, "count": 0, "offer": n_items_for_p, "args":(10, 80, 5, 45)},
+        "I": {"price": 35, "count": 0},
+        "J": {"price": 60, "count": 0},
+        "K": {"price": 80, "count": 0, "offer": n_items_for_p, "args":(2, 150, 0, 0)},
+
+
+
+
+
+
     }
     for item in skus:
         if item not in items: return -1
@@ -73,6 +84,7 @@ def checkout(skus):
 
     
     return int(subtotal)
+
 
 
 
