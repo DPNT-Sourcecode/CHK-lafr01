@@ -22,7 +22,11 @@ def checkout(skus):
         if items[X]["count"] >= n+1:
             free = items[X]["count"] // (n+1)
             items[X]["count"] -= free
-            print(free)
+    
+    def buy_any3_for_x():
+        total_items = sum(item["count"] for item in items.values() if item["offer"] == "multi-buy")
+        print(total_items)
+
 
 
     items = { 
@@ -44,14 +48,14 @@ def checkout(skus):
         "P": {"price": 50, "count": 0, "offer": n_items_for_p, "args":(5, 200, 0, 0)},
         "Q": {"price": 30, "count": 0, "offer": n_items_for_p, "args":(3, 80, 0, 0)},
         "R": {"price": 50, "count": 0, "offer": free_X_for_nY, "args":("Q", 3, "R")},
-        "S": {"price": 30, "count": 0},
-        "T": {"price": 20, "count": 0},
+        "S": {"price": 30, "count": 0, "offer": "multi-buy"},
+        "T": {"price": 20, "count": 0, "offer": "multi-buy"},
         "U": {"price": 40, "count": 0, "offer": buy_n_get_1_free, "args": (3, "U")},
         "V": {"price": 50, "count": 0, "offer": n_items_for_p, "args":(3, 130, 2, 90)},
-        "W": {"price": 20, "count": 0},
-        "X": {"price": 90, "count": 0},
-        "Y": {"price": 10, "count": 0},
-        "Z": {"price": 50, "count": 0},
+        "W": {"price": 20, "count": 0, "offer": "multi-buy"},
+        "X": {"price": 90, "count": 0, "offer": "multi-buy"},
+        "Y": {"price": 10, "count": 0, "offer": "multi-buy"},
+        "Z": {"price": 50, "count": 0, "offer": "multi-buy"},
 
     }
     for item in skus:
@@ -59,7 +63,7 @@ def checkout(skus):
         items[item]["count"] += 1
 
     for item in items.values():
-        if "offer" in item and item["offer"] != n_items_for_p:
+        if item.get("offer") == free_X_for_nY or item.get("offer") == buy_n_get_1_free:
             item["offer"](*item["args"])
 
 
@@ -71,5 +75,3 @@ def checkout(skus):
             subtotal += item["price"]*item["count"]
 
     return int(subtotal)
-
-
