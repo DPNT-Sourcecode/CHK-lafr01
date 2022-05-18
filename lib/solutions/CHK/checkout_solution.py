@@ -26,7 +26,20 @@ def checkout(skus):
     def buy_any3_for_x():
         total_items = sum(item["count"] for item in items.values() if item.get("offer") == "multi-buy")
         to_remove = total_items // 3
+        while to_remove:
+            if items["X"]["count"]:
+                items["X"]["count"] -= 1
+            elif items["Z"]["count"]:
+                items["Z"]["count"] -= 1
+            elif items["S"]["count"]:
+                items["S"]["count"] -= 1
+            elif items["T"]["count"]:
+                items["T"]["count"] -= 1
+            elif items["W"]["count"]:
+                items["W"]["count"] -= 1
+            
         items["X"]["count"] = max(items["X"]["count"]-to_remove, 0)
+        items[""]
             
 
 
@@ -81,5 +94,6 @@ def checkout(skus):
 
     return int(subtotal)
 checkout("STWXYZZZZ")
+
 
 
