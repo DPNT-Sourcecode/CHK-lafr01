@@ -25,7 +25,7 @@ def checkout(skus):
     
     def buy_any3_for_x():
         total_items = sum(item["count"] for item in items.values() if item.get("offer") == "multi-buy")
-        to_remove = to_remove_copy = total_items // 3
+        to_remove = to_remove_copy = (total_items // 3)*3
 
         # Remove items from count, in price order
         for item in ["X", "Z", "S", "T", "W", "Y"]:
@@ -34,7 +34,7 @@ def checkout(skus):
             items[item]["count"] -= items_removed
             to_remove_copy -= items_removed
         
-        return to_remove*45
+        return to_remove*15
     
             
 
@@ -82,6 +82,7 @@ def checkout(skus):
 
 
     subtotal = buy_any3_for_x()
+    print(subtotal)
 
     for item in items.values():
         if item.get("offer") == n_items_for_p:
@@ -92,5 +93,6 @@ def checkout(skus):
     print(subtotal)
     return int(subtotal)
     
-checkout("STWXYZZZZ")
+checkout("STWXYZZZZZZ")
+
 
