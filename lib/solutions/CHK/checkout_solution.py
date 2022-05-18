@@ -1,6 +1,5 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
-
 def checkout(skus):
     items = { 
         "A": {"price": 50, "count": 0},
@@ -37,6 +36,8 @@ def checkout(skus):
 
     print(discount, freeBs, min(items["B"]["count"], freeBs))
     print(items)
+    print(subtotal)
 
     return int(subtotal - discount)
 
+checkout("EEEEBB")
