@@ -1,5 +1,3 @@
-from collections import defaultdict
-
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
@@ -29,6 +27,7 @@ def checkout(skus):
             subtotal += details["price"]*details["count"]
 
     return int(subtotal)
+
 
 
 
