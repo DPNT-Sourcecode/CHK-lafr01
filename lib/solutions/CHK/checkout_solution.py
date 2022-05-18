@@ -28,7 +28,7 @@ def checkout(skus):
 
     if items["F"]["count"] >= 3:
         freeFs = items["F"]["count"]//3
-        items["F"]["count"] - freeFs
+        items["F"]["count"] -= freeFs
 
 
     subtotal = 0
@@ -50,5 +50,6 @@ def checkout(skus):
 
     
     return int(subtotal)
+
 
 
