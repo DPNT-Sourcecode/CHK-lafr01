@@ -15,16 +15,17 @@ def checkout(skus):
     subtotal = 0
     for item, details in items.items():
         if item == "A":
-            batches_of_3 = details["count"] % 3
-            remaining = details["count"]  // 3
+            batches_of_3 = details["count"] // 3
+            remaining = details["count"]  % 3
             subtotal += batches_of_3 * 130 + remaining * details["price"]
 
         elif item == "B":
-            batches_of_2 = details["count"] % 2
-            remaining = details["count"]  // 2
+            batches_of_2 = details["count"] // 2
+            remaining = details["count"]  % 2
             subtotal += batches_of_2 * 45 + remaining * details["price"]
 
         else:
             subtotal += details["price"]*details["count"]
 
     return int(subtotal)
+
