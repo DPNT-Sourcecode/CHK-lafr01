@@ -34,7 +34,7 @@ def checkout(skus):
             items[item]["count"] -= items_removed
             to_remove_copy -= items_removed
         
-        return to_remove*15
+        return to_remove*45
     
             
 
@@ -82,12 +82,15 @@ def checkout(skus):
 
 
     subtotal = buy_any3_for_x()
+
     for item in items.values():
         if item.get("offer") == n_items_for_p:
             subtotal += n_items_for_p(*item["args"], item)
         else:
             subtotal += item["price"]*item["count"]
-    print(subtotal)
 
+    print(subtotal)
     return int(subtotal)
+    
 checkout("STWXYZZZZ")
+
