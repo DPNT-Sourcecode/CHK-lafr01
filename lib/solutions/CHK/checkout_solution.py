@@ -24,7 +24,7 @@ def checkout(skus):
     freeBs = items["E"]["count"] // 2
     items["B"]["count"] =  max(items["B"]["count"] - freeBs, 0)
 
-    #CHK_R3
+    #CHK_R3   
     
     if items["F"]["count"] >= 3:
         freeFs = items["F"]["count"]//3
@@ -32,7 +32,6 @@ def checkout(skus):
 
 
     
-    subtotal = discount = 0
     for item, details in items.items():
         if item == "A":
             batches_of_5 = details["count"] // 5
@@ -50,7 +49,5 @@ def checkout(skus):
             subtotal += details["price"]*details["count"]
 
     
+    return int(subtotal)
 
-    return int(subtotal - discount)
-
-checkout ("FFFFF")
