@@ -32,7 +32,10 @@ def checkout(skus):
         else:
             subtotal += details["price"]*details["count"]
 
-    return int(subtotal)
+    freeBs = items["E"]["count"] // 2
+    discount = max(items["B"]["count"] - freeBs, 0)*items["B"]["price"]
+
+    return int(subtotal - discount)
 
 
 
