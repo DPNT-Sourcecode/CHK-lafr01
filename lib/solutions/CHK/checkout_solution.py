@@ -30,23 +30,15 @@ def checkout(skus):
             subtotal += batches_of_5*200 + batches_of_3 * 130 + remaining * details["price"]
 
         elif item == "B":
-            batches_of_2 = details["count"] // 2
-            remaining = details["count"]  % 2
-            Bsubtotal = batches_of_2 * 45 + remaining * details["price"]
-            subtotal += Bsubtotal
+            subtotal += get_price_for_b(details["count"])
 
         else:
             subtotal += details["price"]*details["count"]
 
     freeBs = items["E"]["count"] // 2
     if items["B"]["count"]:
-        discount = min(items["B"]["count"], freeBs)*items["B"]["price"]
-
-    print(discount, freeBs, min(items["B"]["count"], freeBs))
-    print(items)
-    print(subtotal)
+        discount = get_price_for_b(min(items["B"]["count"], freeBs))
 
     return int(subtotal - discount)
 
-checkout("EEEEBB")
 
