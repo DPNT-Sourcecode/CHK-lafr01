@@ -80,19 +80,14 @@ def checkout(skus):
             item["offer"](*item["args"])
     
 
-
     subtotal = buy_any3_for_x()
-    print(subtotal)
-
     for item in items.values():
         if item.get("offer") == n_items_for_p:
             subtotal += n_items_for_p(*item["args"], item)
         else:
             subtotal += item["price"]*item["count"]
 
-    print(subtotal)
     return int(subtotal)
-    
-checkout("STWXYZZZZZZ")
+
 
 
