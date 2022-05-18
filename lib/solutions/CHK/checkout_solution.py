@@ -28,7 +28,7 @@ def checkout(skus):
         to_remove = to_remove_copy = (total_items // 3)*3
 
         # Remove items from count, in price order
-        for item in ["X", "Z", "S", "T", "W", "Y"]:
+        for item in ["Z", "S", "T", "W", "X", "Y"]:
             if to_remove_copy == 0: break
             items_removed = min(items[item]["count"], to_remove_copy)
             items[item]["count"] -= items_removed
@@ -53,7 +53,7 @@ def checkout(skus):
         "H": {"price": 10, "count": 0, "offer": n_items_for_p, "args":(10, 80, 5, 45)},
         "I": {"price": 35, "count": 0},
         "J": {"price": 60, "count": 0},
-        "K": {"price": 80, "count": 0, "offer": n_items_for_p, "args":(2, 150, 0, 0)},
+        "K": {"price": 70, "count": 0, "offer": n_items_for_p, "args":(2, 150, 0, 0)},
         "L": {"price": 90, "count": 0},
         "M": {"price": 15, "count": 0},
         "N": {"price": 40, "count": 0, "offer": free_X_for_nY, "args": ("M", 3, "N")},
@@ -61,12 +61,12 @@ def checkout(skus):
         "P": {"price": 50, "count": 0, "offer": n_items_for_p, "args":(5, 200, 0, 0)},
         "Q": {"price": 30, "count": 0, "offer": n_items_for_p, "args":(3, 80, 0, 0)},
         "R": {"price": 50, "count": 0, "offer": free_X_for_nY, "args":("Q", 3, "R")},
-        "S": {"price": 30, "count": 0, "offer": "multi-buy"},
+        "S": {"price": 20, "count": 0, "offer": "multi-buy"},
         "T": {"price": 20, "count": 0, "offer": "multi-buy"},
         "U": {"price": 40, "count": 0, "offer": buy_n_get_1_free, "args": (3, "U")},
         "V": {"price": 50, "count": 0, "offer": n_items_for_p, "args":(3, 130, 2, 90)},
         "W": {"price": 20, "count": 0, "offer": "multi-buy"},
-        "X": {"price": 90, "count": 0, "offer": "multi-buy"},
+        "X": {"price": 17, "count": 0, "offer": "multi-buy"},
         "Y": {"price": 10, "count": 0, "offer": "multi-buy"},
         "Z": {"price": 50, "count": 0, "offer": "multi-buy"},
 
@@ -88,6 +88,7 @@ def checkout(skus):
             subtotal += item["price"]*item["count"]
 
     return int(subtotal)
+
 
 
 
