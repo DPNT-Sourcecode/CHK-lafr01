@@ -21,7 +21,7 @@ def checkout(skus):
     def buy_n_get_1_free(n, X):
         print(n, X)
         if items[X]["count"] >= n+1:
-            free = items[X]["count"] // n+1
+            free = items[X]["count"] // (n+1)
             items[X]["count"] -= free
             print(free)
 
@@ -72,6 +72,4 @@ def checkout(skus):
             subtotal += item["price"]*item["count"]
 
     return int(subtotal)
-
-checkout("UUUU")
 
