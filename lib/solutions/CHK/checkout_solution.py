@@ -1,5 +1,6 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
+
 def checkout(skus):
     items = { 
         "A": {"price": 50, "count": 0},
@@ -8,7 +9,6 @@ def checkout(skus):
         "D": {"price": 15, "count": 0},
         "E": {"price": 40, "count": 0}
     }
-
     for item in skus:
         if item not in items: return -1
         items[item]["count"] += 1
@@ -35,9 +35,8 @@ def checkout(skus):
     freeBs = items["E"]["count"] // 2
     discount = min(items["B"]["count"], freeBs)*items["B"]["price"]
 
+    print(discount, freeBs, min(items["B"]["count"], freeBs))
+    print(items)
+
     return int(subtotal - discount)
-
-
-
-
 
