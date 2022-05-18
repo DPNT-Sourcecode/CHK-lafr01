@@ -13,13 +13,23 @@ def checkout(skus):
         if item not in items: return -1
         items[item]["count"] += 1
 
+    #CHK_R2
+
     def get_price_for_b(n):
         batches_of_2 = n // 2
         remaining = n  % 2
         return batches_of_2 * 45 + remaining * items["B"]["price"]
 
+
     freeBs = items["E"]["count"] // 2
     items["B"]["count"] =  max(items["B"]["count"] - freeBs, 0)
+
+    #CHK_R3
+    
+    if items["F"]["count"] >= 3:
+        freeFs = items["F"]["count"]//3
+        items["F"]["count"] - freeFs
+
 
     
     subtotal = discount = 0
@@ -39,7 +49,8 @@ def checkout(skus):
         else:
             subtotal += details["price"]*details["count"]
 
-
+    
 
     return int(subtotal - discount)
 
+checkout ("FFFFF")
