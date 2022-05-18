@@ -43,7 +43,3 @@ def checkout(skus):
 
     return int(subtotal - discount)
 
-
-
-
-
