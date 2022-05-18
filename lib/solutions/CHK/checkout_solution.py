@@ -25,21 +25,33 @@ def checkout(skus):
     
     def buy_any3_for_x():
         total_items = sum(item["count"] for item in items.values() if item.get("offer") == "multi-buy")
-        to_remove = total_items // 3
-        while to_remove:
-            if items["X"]["count"]:
-                items["X"]["count"] -= 1
-            elif items["Z"]["count"]:
-                items["Z"]["count"] -= 1
-            elif items["S"]["count"]:
-                items["S"]["count"] -= 1
-            elif items["T"]["count"]:
-                items["T"]["count"] -= 1
-            elif items["W"]["count"]:
-                items["W"]["count"] -= 1
+        to_remove = to_remove_copy = total_items // 3
+
+        for item in ["X", "Z", "S", "T", "W", "Y"]:
+            items_removed = min(items[item]["count"], to_remove_copy)
+            items[item]["count"] -= items_removed
+            to_remove_copy -= items_removed
+            if to_remove_copy == 0: break;
+
+        # while to_remove_copy:           
+        #     if items["X"]["count"]:
+        #         items["X"]["count"] -= 1
+        #     elif items["Z"]["count"]:
+        #         items["Z"]["count"] -= 1
+        #     elif items["S"]["count"]:
+        #         items["S"]["count"] -= 1
+        #     elif items["T"]["count"]:
+        #         items["T"]["count"] -= 1
+        #     elif items["W"]["count"]:
+        #         items["W"]["count"] -= 1
+        #     elif items["Y"]["count"]:
+        #         items["Y"]["count"] -= 1
+        #     to_remove_copy -= 1
+        
+        return 
+    
             
-        items["X"]["count"] = max(items["X"]["count"]-to_remove, 0)
-        items[""]
+
             
 
 
@@ -94,6 +106,7 @@ def checkout(skus):
 
     return int(subtotal)
 checkout("STWXYZZZZ")
+
 
 
 
