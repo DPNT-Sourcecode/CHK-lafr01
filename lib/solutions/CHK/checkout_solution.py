@@ -28,7 +28,7 @@ def checkout(skus):
         to_remove = to_remove_copy = (total_items // 3)*3
 
         # Remove items from count, in price order
-        for item in ["Z", "S", "T", "W", "Y", "X"]:
+        for item in ["Z", "S", "T", "Y", "X"]:
             if to_remove_copy == 0: break
             items_removed = min(items[item]["count"], to_remove_copy)
             items[item]["count"] -= items_removed
@@ -65,7 +65,7 @@ def checkout(skus):
         "T": {"price": 20, "count": 0, "offer": "multi-buy"},
         "U": {"price": 40, "count": 0, "offer": buy_n_get_1_free, "args": (3, "U")},
         "V": {"price": 50, "count": 0, "offer": n_items_for_p, "args":(3, 130, 2, 90)},
-        "W": {"price": 20, "count": 0, "offer": "multi-buy"},
+        "W": {"price": 20, "count": 0},
         "X": {"price": 17, "count": 0, "offer": "multi-buy"},
         "Y": {"price": 20, "count": 0, "offer": "multi-buy"},
         "Z": {"price": 21, "count": 0, "offer": "multi-buy"},
@@ -89,6 +89,7 @@ def checkout(skus):
     print(subtotal)
     return int(subtotal)
 checkout("ABCDEFGHIJKLMNOPQRSTUVW")
+
 
 
 
